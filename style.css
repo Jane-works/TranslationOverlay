@@ -1,0 +1,70 @@
+body {
+    font-family: 'Microsoft YaHei', sans-serif;
+    margin: 0;
+    padding: 10px;
+    background: rgba(30, 30, 40, 0.9);
+    color: #fff;
+    border-radius: 10px;
+    width: 350px;
+    min-height: 500px;
+}
+
+#translation-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    background: #222;
+    color: #fff;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 8px 12px;
+    margin-right: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#fetch-models {
+    background: #4CAF50;
+}
+
+#save-config {
+    background: #2196F3;
+}
+
+.text-box {
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 10px;
+    min-height: 60px;
+    background: #222;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+#status {
+    font-size: 12px;
+    margin-left: 10px;
+    color: #4CAF50;
+}
