@@ -1,70 +1,33 @@
-body {
-    font-family: 'Microsoft YaHei', sans-serif;
-    margin: 0;
-    padding: 10px;
-    background: rgba(30, 30, 40, 0.9);
-    color: #fff;
-    border-radius: 10px;
-    width: 350px;
-    min-height: 500px;
+/* translation-overlay/style.css */
+
+/* 主窗口 */
+.translation-overlay {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #eee;
 }
 
-#translation-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+/* 顶部栏按钮 */
+.translation-overlay button {
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
 }
 
-.input-group {
-    margin-bottom: 10px;
+.translation-overlay button:hover {
+  color: #fff;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 12px;
+/* 内容区 */
+.translation-overlay #overlay-content {
+  font-size: 13px;
+  line-height: 1.4;
+  color: #eee;
 }
 
-input, select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #555;
-    border-radius: 4px;
-    background: #222;
-    color: #fff;
-    box-sizing: border-box;
-}
-
-button {
-    padding: 8px 12px;
-    margin-right: 5px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-}
-
-#fetch-models {
-    background: #4CAF50;
-}
-
-#save-config {
-    background: #2196F3;
-}
-
-.text-box {
-    border: 1px solid #555;
-    border-radius: 4px;
-    padding: 10px;
-    min-height: 60px;
-    background: #222;
-    margin-top: 5px;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-#status {
-    font-size: 12px;
-    margin-left: 10px;
-    color: #4CAF50;
+/* 错误提示 */
+.translation-overlay #overlay-error {
+  font-size: 12px;
+  color: red;
 }
