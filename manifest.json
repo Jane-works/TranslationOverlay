@@ -6,6 +6,5 @@
   "author": "Jane",
   "entry": "script.js",
   "style": "style.css",
-  "icon": "icon.png",
-  "requires": ">=1.10.0"
+  "icon": "icon.png"
 }
