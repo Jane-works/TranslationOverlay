@@ -45,38 +45,39 @@ overlayBox.innerHTML = `
     <button id="overlay-save" style="margin-top:6px;width:100%;padding:4px;">保存配置</button>
   </div>
 `;
-document.body.appendChild(overlayBox);
 
-document.getElementById("overlay-close").onclick = () => {
-  overlayBox.style.display = "none";
-};
+function initOverlayUI() {
+  document.getElementById("overlay-close").onclick = () => {
+    overlayBox.style.display = "none";
+  };
 
-const settingsPanel = document.getElementById("overlay-settings-panel");
-document.getElementById("overlay-settings").onclick = () => {
-  settingsPanel.style.display = settingsPanel.style.display === "none" ? "block" : "none";
-};
+  const settingsPanel = document.getElementById("overlay-settings-panel");
+  document.getElementById("overlay-settings").onclick = () => {
+    settingsPanel.style.display = settingsPanel.style.display === "none" ? "block" : "none";
+  };
 
-// 填充当前配置到输入框
-document.getElementById("input-api-url").value = apiUrl;
-document.getElementById("input-api-key").value = apiKey;
-document.getElementById("input-model").value = modelName;
-document.getElementById("input-lang").value = targetLang;
+  // 填充当前配置到输入框
+  document.getElementById("input-api-url").value = apiUrl;
+  document.getElementById("input-api-key").value = apiKey;
+  document.getElementById("input-model").value = modelName;
+  document.getElementById("input-lang").value = targetLang;
 
-document.getElementById("overlay-save").onclick = () => {
-  apiUrl = document.getElementById("input-api-url").value.trim();
-  apiKey = document.getElementById("input-api-key").value.trim();
-  modelName = document.getElementById("input-model").value.trim();
-  targetLang = document.getElementById("input-lang").value.trim() || "zh";
-  localStorage.setItem("overlayApiUrl", apiUrl);
-  localStorage.setItem("overlayApiKey", apiKey);
-  localStorage.setItem("overlayModel", modelName);
-  localStorage.setItem("overlayLang", targetLang);
-  showError("配置已保存 ✔");
-  settingsPanel.style.display = "none";
-};
+  document.getElementById("overlay-save").onclick = () => {
+    apiUrl = document.getElementById("input-api-url").value.trim();
+    apiKey = document.getElementById("input-api-key").value.trim();
+    modelName = document.getElementById("input-model").value.trim();
+    targetLang = document.getElementById("input-lang").value.trim() || "zh";
+    localStorage.setItem("overlayApiUrl", apiUrl);
+    localStorage.setItem("overlayApiKey", apiKey);
+    localStorage.setItem("overlayModel", modelName);
+    localStorage.setItem("overlayLang", targetLang);
+    showError("配置已保存 ✔");
+    settingsPanel.style.display = "none";
+  };
+}
 
-const overlayContent = document.getElementById("overlay-content");
-const errorBox = document.getElementById("overlay-error");
+const overlayContent = overlayBox.querySelector("#overlay-content");
+const errorBox = overlayBox.querySelector("#overlay-error");
 
 function showError(msg) {
   errorBox.textContent = msg || "";
@@ -148,4 +149,9 @@ function observeChat() {
   observer.observe(chatRoot, { childList: true, subtree: true });
 }
 
-observeChat();
+// ===== 扩展入口 =====
+export function loadExtension() {
+  document.body.appendChild(overlayBox);
+  initOverlayUI();
+  observeChat();
+}
