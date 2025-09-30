@@ -1,37 +1,64 @@
-<div class="translation-overlay-panel">
-  <h3>翻译插件设置</h3>
-  <label>API 地址:<br>
-    <input id="overlay-api-url" type="text" style="width:100%">
+<div class="translation-overlay-panel" style="font-size:14px;line-height:1.6;">
+  <h3 style="margin-bottom:8px;">翻译插件设置</h3>
+
+  <label>
+    API 地址:<br>
+    <input id="overlay-api-url" type="text" placeholder="例如: https://api.openai.com/v1" style="width:100%">
   </label>
-  <label>API Key:<br>
-    <input id="overlay-api-key" type="password" style="width:100%">
+  <br><br>
+
+  <label>
+    API Key:<br>
+    <input id="overlay-api-key" type="password" placeholder="sk-xxxx" style="width:100%">
   </label>
-  <label>模型名称:<br>
-    <input id="overlay-model" type="text" style="width:100%">
+  <br><br>
+
+  <label>
+    模型名称:<br>
+    <input id="overlay-model" type="text" placeholder="gpt-3.5-turbo" style="width:100%">
   </label>
-  <label>目标语言:<br>
-    <input id="overlay-lang" type="text" value="zh" style="width:100%">
+  <br><br>
+
+  <label>
+    目标语言:<br>
+    <input id="overlay-lang" type="text" value="zh" placeholder="zh / en / jp..." style="width:100%">
   </label>
-  <button id="overlay-save">保存配置</button>
-  <div id="overlay-panel-msg" style="margin-top:5px;font-size:12px;color:#0f0"></div>
+  <br><br>
+
+  <button id="overlay-save" style="padding:6px 12px;border:none;border-radius:6px;background:#4caf50;color:#fff;cursor:pointer;">
+    保存配置
+  </button>
+
+  <div id="overlay-panel-msg" style="margin-top:8px;font-size:12px;color:#0f0"></div>
 </div>
 
 <script type="module">
   import { loadState, saveState } from "./state.js";
 
-  const s = loadState();
-  document.getElementById("overlay-api-url").value = s.apiUrl;
-  document.getElementById("overlay-api-key").value = s.apiKey;
-  document.getElementById("overlay-model").value = s.modelName;
-  document.getElementById("overlay-lang").value = s.targetLang;
+  // 加载配置到输入框
+  const s = loadState() || {};
+  document.getElementById("overlay-api-url").value = s.apiUrl || "";
+  document.getElementById("overlay-api-key").value = s.apiKey || "";
+  document.getElementById("overlay-model").value = s.modelName || "";
+  document.getElementById("overlay-lang").value = s.targetLang || "zh";
 
+  // 保存配置
   document.getElementById("overlay-save").onclick = () => {
-    saveState({
+    const config = {
       apiUrl: document.getElementById("overlay-api-url").value.trim(),
       apiKey: document.getElementById("overlay-api-key").value.trim(),
       modelName: document.getElementById("overlay-model").value.trim(),
       targetLang: document.getElementById("overlay-lang").value.trim()
-    });
-    document.getElementById("overlay-panel-msg").textContent = "配置已保存 ✔";
+    };
+
+    saveState(config);
+
+    const msgBox = document.getElementById("overlay-panel-msg");
+    msgBox.style.color = "#0f0";
+    msgBox.textContent = "配置已保存 ✔";
+
+    setTimeout(() => {
+      msgBox.textContent = "";
+    }, 2000);
   };
 </script>
