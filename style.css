@@ -1,33 +1,16 @@
-/* translation-overlay/style.css */
-
-/* 主窗口 */
-.translation-overlay {
-  font-family: sans-serif;
+/* 设置面板样式 */
+.translation-overlay-panel {
+  padding: 10px;
   font-size: 14px;
   color: #eee;
 }
-
-/* 顶部栏按钮 */
-.translation-overlay button {
-  background: none;
-  border: none;
-  color: #aaa;
-  cursor: pointer;
+.translation-overlay-panel h3 {
+  margin-top: 0;
 }
-
-.translation-overlay button:hover {
-  color: #fff;
+.translation-overlay-panel input {
+  margin-bottom: 8px;
 }
-
-/* 内容区 */
-.translation-overlay #overlay-content {
-  font-size: 13px;
-  line-height: 1.4;
-  color: #eee;
-}
-
-/* 错误提示 */
-.translation-overlay #overlay-error {
-  font-size: 12px;
-  color: red;
+.translation-overlay-panel button {
+  margin-top: 6px;
+  padding: 4px 8px;
 }
