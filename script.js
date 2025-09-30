@@ -93,9 +93,9 @@ function observeChat() {
   observer.observe(chatRoot, { childList: true, subtree: true });
 }
 
-export function loadExtension() {
+export function init() {
   loadState();
   createOverlay();
   observeChat();
-  console.log("Translation Overlay 已加载");
+  console.log("✅ Translation Overlay 已加载");
 }
